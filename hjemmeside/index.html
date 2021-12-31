@@ -1,22 +1,79 @@
-<html>
-    <head>
-        <title>C. Lund Entreprise</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="index.js"></script>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="Malmos-logo3.png">
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity = 'sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin = 'anonymous'></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <title>KRYDS OG BOLLE</title>
+</head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            background-color: rgb(49, 49, 49);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            position: absolute;
+            width: 75%;
+            height: 75%;
+            background-color: white;
+            left: 12.5%;
+            top: 12.5%;
+            border: 5px solid black;
+        }
+
+        .slot {
+            position: relative;
+            float: left;
+            width: 32.95%;
+            height: 32.50%;
+            margin-left: 5px;
+            margin-top: 5px;
+            background-color: rgba(30, 32, 44, 0.75);
+        }
+
+        i {
+            position: relative;
+            left: 47.5%;
+            top: 47.5%;
+            color: white;
+            font-size: 1.25vw;
+        }
+    </style>
+
     <body>
-        <div class="container">
-
-            <div class="nav-bar">
-                <img id='logo' src="Malmos-logo3.png">
-                <p><i class="fas fa-mobile-alt"></i> 21 67 27 97</p>
-            </div>
-
-        </div>
+        <h1>KRYDS OG BOLLE</h1>
+        <div class="container"></div>
     </body>
+
+    <script>
+        let allowedTurn = 'cross'
+        let crossCount = 0
+        let circleCount = 0
+
+        for(let i = 0; i < 9; i++) {
+            $('.container').append(`<div class='slot' id='${i}' onclick='slotChoosen(${i})'></div>`)
+        }
+
+        function slotChoosen(slotID) {
+            if (allowedTurn == 'cross') {
+                $('#' + slotID).html('<i class="fas fa-times"></i>')
+                allowedTurn = 'circle'
+            } else {
+                $('#' + slotID).html('<i class="far fa-circle"></i>')
+                allowedTurn = 'cross'
+            }
+        }
+    </script>
 </html>
